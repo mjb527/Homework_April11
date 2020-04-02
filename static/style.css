@@ -1,0 +1,53 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+
+@media only screen and (max-width: 600px) {
+  body {
+    overflow-y: scroll;
+    overflow-x: hidden;
+    width: 95%;
+  }
+}
+@media only screen and (min-width: 600px) {
+  body {
+    overflow: hidden;
+  }
+  .row {
+    height: 100vh;
+  }
+}
+
+.row {
+  font-family: 'Roboto', sans-serif;
+}
+
+#left {
+  height: 100%;
+}
+
+#info {
+  border-radius: 8px 0 0 8px;
+}
+
+.forecast-box {
+  height: 200px;
+  border: 1px solid grey;
+  border-radius: 8px;
+}
+
+.fas {
+  right: 50%;
+  font-size: 40px;
+}
+
+/* overwrite the .m-2 class to expand the margins a bit
+default is 0.5rem */
+.m-2 {
+  margin: 0.75rem !important;
+}
+
+/* make .bg-light a bit darker, & round the corners while we're at it */
+.bg-light {
+    background-color: #ebebe0 !important;
+    border-radius: 4px;
+}
