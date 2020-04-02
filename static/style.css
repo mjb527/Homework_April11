@@ -1,14 +1,17 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
 
-@media only screen and (max-width: 200px) {
+/* small & md screens */
+@media only screen and (min-width: 200px) {
   body {
     overflow-y: scroll;
     overflow-x: hidden;
     width: 95%;
   }
 }
-@media only screen and (min-width: 650px) {
+
+/*  screens */
+@media only screen and (min-width: 992px) {
   body {
     overflow: hidden;
   }
