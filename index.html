@@ -13,13 +13,13 @@
   <body>
     <div class="row my-2 ml-2">
       <!-- left side -->
-      <div class="col-md-3 col-sm-12 bg-light" id="left">
+      <div class="col-md-3 col-sm-12 bg-light pt-2" id="left">
       <!--  search bar -->
         <div class="form-group">
           <div class="h4">Search for a City</div>
           <div class="input-group">
             <input type="text" name="city-input" id="city-input" class="form-control" value="">
-            <span class="input-group-button ml-1">
+            <span class="input-group-button">
               <button type="button" class="btn btn-primary" id="submit-city" aria-label="Left Align">
                 <i class="fa fa-search" aria-hidden="true"></i>
               </button>
@@ -28,6 +28,7 @@
         </div>
 
       <!-- list of 10 big US cities -->
+      <!-- TODO populate based on search history from local storage -->
       <div class="list-group" id="cities">
         <a href="#" class="list-group-item list-group-item-action">New York City</a>
         <a href="#" class="list-group-item list-group-item-action">Boston</a>
@@ -39,6 +40,11 @@
         <a href="#" class="list-group-item list-group-item-action">Pheonix</a>
         <a href="#" class="list-group-item list-group-item-action">Seattle</a>
         <a href="#" class="list-group-item list-group-item-action">Los Angeles</a>
+
+        <a href="#" class="list-group-item list-group-item-action">Detroit</a>
+        <a href="#" class="list-group-item list-group-item-action">Salt Lake City</a>
+        <a href="#" class="list-group-item list-group-item-action">Portland</a>
+        <a href="#" class="list-group-item list-group-item-action">Miami</a>
       </div>
 
     </div>

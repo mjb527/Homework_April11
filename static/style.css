@@ -17,6 +17,17 @@
   }
 }
 
+/* scroll bar for the list on the left of the page
+  no Firefox support without disabling scrolling entirely */
+#cities::-webkit-scrollbar, #cities::-webkit-scrollbar-corner {
+  background-color: white;
+}
+
+#cities::-webkit-scrollbar-thumb {
+  background-color: #007bff;
+  border-radius: 10px;
+}
+
 .row {
   font-family: 'Roboto', sans-serif;
 }
@@ -50,4 +61,21 @@ default is 0.5rem */
 .bg-light {
     background-color: #ebebe0 !important;
     border-radius: 4px;
+}
+
+#cities {
+  max-height: 82%;
+  overflow: scroll;
+  font-weight: bold;
+}
+
+#cities a:hover {
+  background-color: #007bff;
+  color: white;
+}
+
+.selected {
+  border-color: #007bff;
+  color: #007bff;
+  background-color: #f5f5f0;
 }
