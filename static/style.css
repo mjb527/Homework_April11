@@ -101,3 +101,7 @@ default is 0.5rem */
 .selected:hover {
   background-color: #007bff !important;
 }
+
+#placeholder h2 {
+  font-weight: bolder;
+}

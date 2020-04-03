@@ -31,16 +31,43 @@ $(document).ready(function(event) {
 			cities = ['Chicago', 'Dallas', 'Los Angeles', 'Seattle', 'Denver', 'New York City'];
 			localStorage.setItem('cities', cities.toString());
 		}
-		else
-			cities = localStorage.getItem('cities').split(',');
+		else cities = localStorage.getItem('cities').split(',');
 
 		cities.forEach((item) => {
-			$('#cities').prepend(`<a href="#" class="list-group-item list-group-item-action" data-val="${item}">${item}</a>`);
+			$('#cities').prepend(`<a href="#" class="list-group-item list-group-item-action" data-val="${item}"><div class="row">
+							<div class="col-10">${item}</div>
+							<div class="col-1"><span class="badge badge-secondary badge-pill delete"><i class="far fa-trash-alt"></i></span></div>
+							</div>
+						</a>
+					`);
 		});
 
 		return cities;
 
 	}
+	// delete button behavior
+	$('.delete').hover(function() {
+		$(this).addClass('badge-danger');
+		$(this).removeClass('badge-secondary');
+	},
+	function() {
+		$(this).addClass('badge-secondary');
+		$(this).removeClass('badge-danger');
+	});
+
+	$('.delete').click(function() {
+		const parent = $(this).closest('.list-group-item');
+		if(confirm(`Delete ${parent.attr('data-val')} from the list of cities?`)) {
+			// remove from cities array
+			citiesArr.splice(citiesArr.indexOf(parent.attr('data-val')));
+			// update localStorage
+			localStorage.setItem('cities', citiesArr.toString());
+			// remove the parent
+			parent.remove();
+
+		}
+
+	})
 
 	function prependList(city) {
 		$('#cities').prepend('<a href="#" class="list-group-item list-group-item-action" data-city="' + city + '">' + city + '</a>');
@@ -86,7 +113,9 @@ $(document).ready(function(event) {
 	}
 
 	function buildSquares(objects) {
-		// reset the div to append to
+		// remove the temporary text
+		$('#removable').html('');
+		// reset the div to append new city data
 		$('#five-day').html('');
 
 		objects.forEach((item) => {
@@ -105,10 +134,10 @@ $(document).ready(function(event) {
 							<div class="col-8"><strong>${date}</strong</div>
 							<div class="col-4">${img}</div>
 				</div>
-				<div class="smaller weatherDiv pb-1">Weather: <span class="weatherSpan">${weather}</span></div>
-				<div class="smaller tempDiv pb-1">Temperature: <span class="tempSpan">${temperature + String.fromCharCode(176)}F</span></div>
+				<div class="smaller weatherDiv pb-1 px-2">Weather: <span class="weatherSpan">${weather}</span></div>
+				<div class="smaller tempDiv pb-1 px-2">Temperature: <span class="tempSpan">${temperature + String.fromCharCode(176)}F</span></div>
 				<div class="smaller humidityDiv pb-1">Humidity: <span class="humiditySpan">${humidity}%</span></div>
-				<div class="smaller windDiv pb-1">Wind: <span class="windSpan">${wind} mph</span></div>
+				<div class="smaller windDiv pb-1 px-2">Wind: <span class="windSpan">${wind} mph</span></div>
 			`);
 
 			$('#five-day').append(box);
@@ -125,7 +154,7 @@ $(document).ready(function(event) {
 		return dateArray[1] + '/' + dateArray[2] + '/' + dateArray[0];
 	}
 
-	// set the name of the city normally and aVOid tHiS tyPe of TYPinG
+	// set the name of the city properly and aVOid tHiS tyPe of TYPinG
 	function formatCityName(name) {
 		console.log(name);
 		// set all to be lowercase
@@ -134,30 +163,18 @@ $(document).ready(function(event) {
 		name = name.charAt(0).toUpperCase() + name.slice(1);
 		console.log(name);
 		// find each new letter next to a space, hyphen, or period and make capital
-		if(name.indexOf(' ') !== -1)
-			name = citySplitter(name, ' ');
-		if(name.indexOf('.') !== -1)
-			name = citySplitter(name, '.');
-		if(name.indexOf('-') !== -1)
-			name = citySplitter(name, '-');
+		const names = name.split('');
+		for(let i = 0; i < name.length; i++) {
+			console.log(names[i]);
+			if(names[i] === ' ' || names[i] === '-')
+				names[i+1] = names[i+1].toUpperCase();
+			if(names[i] === '.')
+				names[i-1] = names[i-1].toUpperCase();
 
-		console.log(name);
-		// return formattedName;
+		name = names.join('');
+		}
 
-	}
-	// breaks down, adjusts, and rebuilds the city name based on a given character
-	function citySplitter(name, character) {
-		console.log(name);
-		const temp = name.split(character);
-		temp.forEach((item) => function() {
-			item = character + item.charAt(0).toUpperCase() + item.slice(1);
-		});
-		let rebuilt = '';
-
-		temp.forEach((item) => function() {
-			rebuilt += item;
-		});
-		return rebuilt;
+		return name;
 	}
 
 
