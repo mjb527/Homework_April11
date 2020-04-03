@@ -14,6 +14,7 @@
 @media only screen and (min-width: 992px) {
   body {
     overflow: hidden;
+    width: 100%;
   }
   .row {
     height: 100vh;
@@ -49,11 +50,6 @@
   border-radius: 8px;
 }
 
-.fas {
-  right: 50%;
-  font-size: 40px;
-}
-
 /* overwrite the .m-2 class to expand the margins a bit
 default is 0.5rem */
 .m-2 {
@@ -67,7 +63,7 @@ default is 0.5rem */
 }
 
 #cities {
-  max-height: 82%;
+  height: 82%;
   overflow: scroll;
   font-weight: bold;
 }
