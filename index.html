@@ -11,9 +11,10 @@
     <link rel="stylesheet" href="static/style.css">
   </head>
   <body>
-    <div class="row my-2 pl-2 ml-2">
+
+    <div id="container" class="row my-2 pb-2 pl-2 ml-2">
       <!-- left side -->
-      <div class="col-lg-3 col-sm-12 bg-light pt-2 mb-2" id="left">
+      <div class="col-md-3 col-sm-12 bg-light pt-2" id="left">
       <!--  search bar -->
         <div class="form-group">
           <div class="h4">Search for a City</div>
@@ -28,28 +29,13 @@
         </div>
 
       <!-- list of 10 big US cities -->
-      <!-- TODO populate based on search history from local storage -->
-      <div class="list-group" id="cities">
-        <a href="#" class="list-group-item list-group-item-action">New York City</a>
-        <a href="#" class="list-group-item list-group-item-action">Boston</a>
-        <a href="#" class="list-group-item list-group-item-action">Washington, D.C.</a>
-        <a href="#" class="list-group-item list-group-item-action">Atlanta</a>
-        <a href="#" class="list-group-item list-group-item-action">Chicago</a>
-        <a href="#" class="list-group-item list-group-item-action">Denver</a>
-        <a href="#" class="list-group-item list-group-item-action">Dallas</a>
-        <a href="#" class="list-group-item list-group-item-action">Pheonix</a>
-        <a href="#" class="list-group-item list-group-item-action">Seattle</a>
-        <a href="#" class="list-group-item list-group-item-action">Los Angeles</a>
-        <a href="#" class="list-group-item list-group-item-action">Detroit</a>
-        <a href="#" class="list-group-item list-group-item-action">Salt Lake City</a>
-        <a href="#" class="list-group-item list-group-item-action">Portland</a>
-        <a href="#" class="list-group-item list-group-item-action">Miami</a>
-      </div>
+      <!-- populates based on search history from local storage, has 5 default cities -->
+      <div class="list-group pb-4" id="cities"></div>
 
     </div>
 
     <!-- right side -->
-    <div class="col-lg-9 col-sm-12 pl-2" id="right">
+    <div class="col-md-9 col-sm-12 pl-2" id="right">
       <!-- today's details -->
       <div id="info" class="mb-2 pt-2 pb-4 pl-2 border-top border-left border-bottom">
         <div class="h2 pt-3 pb-4"><strong  id="name"></strong></div>
@@ -58,51 +44,25 @@
         <div class="py-3">Humidity: <span id="humidity"></span></div>
         <div class="py-3">Wind Speed: <span id="wind-speed"></span></div>
       </div>
+    </div>
+    <!-- end row next line-->
+  </div>
 
+  <div id="container-bottom" class="row mb-2 mt-auto pb-2 pl-2 mr-auto ml-4">
       <!-- next 5 days -->
-      <div class="pl-2" id="five-day">
+      <div class="mb-2">
         <div class="h2">5-Day Forecast:</div>
         <!-- row with 5 next days -->
-        <div class="row">
+        <div id="five-day" class="row">
           <!-- example day block -->
-          <div class="bg-primary text-white forecast-box pl-2 py-3 col-lg-2 col-sm-12 m-2">
+          <!-- <div class="bg-primary text-white forecast-box pl-2 py-3 col-lg-2 col-sm-12 m-2">
             <div class="date pb-1 h4"> <strong><span class="dateSpan">Use me!</span></strong></div>
             <div class="weather-iconDiv pb-2"></div>
             <div class="tempDiv pb-2">Temperature: <span class="tempSpan"></span> </div>
             <div class="humidityDiv pb-2">Humidity: <span class="humiditySpan"></span> </div>
-          </div>
-
-          <!-- example day block -->
-          <div class="bg-primary text-white forecast-box p-3 col-lg-2 col-sm-12 m-2">
-            <div class="date pb-2 h4"><strong><span class="dateSpan">Date</span></strong></div>
-            <div class="weather-iconDiv pb-2"> <img class="weatherSpan" src="static/images/sun.png" alt="Sunny"> </div>
-            <div class="tempDiv pb-2">Temperature <span class="tempSpan"></span> </div>
-            <div class="humidityDiv pb-2">Humidity <span class="humiditySpan"></span> </div>
-          </div>
-
-          <!-- example day block -->
-          <div class="bg-primary text-white forecast-box p-3  col-lg-2 col-sm-12 m-2">
-            <div class="date pb-2"> <span class="dateSpan">Date</span> </div>
-            <div class="weather-iconDiv pb-2"> <img class="weatherSpan" src="static/images/sun.png" alt="Sunny"> </div>
-            <div class="tempDiv pb-2">Temperature <span class="tempSpan"></span> </div>
-            <div class="humidityDiv pb-2">Humidity <span class="humiditySpan"></span> </div>
-          </div>
+          </div> -->
 
 
-          <!-- example day block -->
-          <div class="bg-primary text-white forecast-box p-3  col-lg-2 col-sm-12 m-2">
-            <div class="date pb-2"> <span class="dateSpan">Date</span> </div>
-            <div class="weather-iconDiv pb-2"> <img class="weatherSpan" src="static/images/sun.png" alt="Sunny"> </div>
-            <div class="tempDiv pb-2">Temperature <span class="tempSpan"></span> </div>
-            <div class="humidityDiv pb-2">Humidity <span class="humiditySpan"></span> </div>
-          </div>
-
-          <!-- example day block -->
-          <div class="bg-primary text-white forecast-box p-3  col-lg-2 col-sm-12 m-2">
-            <div class="date pb-2"> <span class="dateSpan">Date</span> </div>
-            <div class="weather-iconDiv pb-2"> <img class="weatherSpan" src="static/images/sun.png" alt="Sunny"> </div>
-            <div class="tempDiv pb-2">Temperature: <span class="tempSpan"></span> </div>
-            <div class="humidityDiv pb-2">Humidity: <span class="humiditySpan"></span> </div>
           </div>
 
         </div>
@@ -111,12 +71,7 @@
     </div>
 
 
-    <!-- end row -->
-    </div>
-
-    <!-- div to space the bottom out a bit because
-      of the height styling on the .row class on larger screens -->
-    <div class='text-white' style="height: 50px;">
+    <!-- end row next line -->
     </div>
 
   </body>

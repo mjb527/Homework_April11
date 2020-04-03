@@ -2,12 +2,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
 
 /* small & md screens */
-@media only screen and (min-width: 200px) {
-  body {
-    overflow-y: scroll;
-    overflow-x: hidden;
-    width: 95%;
-  }
+  @media only screen and (min-width: 200px) {
+     body {
+      overflow-y: scroll;
+      overflow-x: hidden;
+      width: 95%;
+    }
 }
 
 /* large screens */
@@ -16,15 +16,19 @@
     overflow: hidden;
     width: 100%;
   }
-  .row {
-    height: 100vh;
+  #container {
+    overflow: hidden;
   }
 }
 
 /* scroll bar for the list on the left of the page
   no Firefox support without disabling scrolling entirely */
-#cities::-webkit-scrollbar, #cities::-webkit-scrollbar-corner {
+#cities::-webkit-scrollbar {
   background-color: white;
+}
+
+#cities::-webkit-scrollbar-corner {
+  background-color: #ebebe0;
 }
 
 #cities::-webkit-scrollbar-thumb {
@@ -32,20 +36,35 @@
   border-radius: 10px;
 }
 
-.row {
+body {
   font-family: 'Roboto', sans-serif;
 }
 
-#left {
-  height: 100%;
+
+#left, #right {
+  border-radius: 12px;
+  height: 370px;
 }
 
 #info {
   border-radius: 8px 0 0 8px;
 }
 
+#info .py-3 {
+  font-size: 20px;
+  font-weight: bold;
+  /* height: 45%; */
+}
+
+.smaller {
+  color: white;
+  font-size: 16px;
+  font-weight: normal;
+  padding-left: 0.75em;
+}
+
 .forecast-box {
-  height: 200px;
+  max-height: 220px;
   border: 1px solid grey;
   border-radius: 8px;
 }
@@ -63,7 +82,7 @@ default is 0.5rem */
 }
 
 #cities {
-  height: 82%;
+  height: 70%;
   overflow: scroll;
   font-weight: bold;
 }
@@ -74,7 +93,11 @@ default is 0.5rem */
 }
 
 .selected {
-  border-color: #007bff;
-  color: #007bff;
-  background-color: #f5f5f0;
+  color: white;
+  background-color: #99c2ff !important;
+  font-weight: bolder;
+}
+
+.selected:hover {
+  background-color: #007bff !important;
 }
