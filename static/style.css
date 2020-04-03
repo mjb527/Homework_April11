@@ -46,11 +46,12 @@ body {
   height: 370px;
 }
 
+
 #info {
   border-radius: 8px 0 0 8px;
 }
 
-#info .py-3 {
+#info .item {
   font-size: 20px;
   font-weight: bold;
   /* height: 45%; */

@@ -5,6 +5,8 @@ $(document).ready(function(event) {
 	// easier to add cities if we have the whole list always
 	let citiesArr = loadCities();
 
+	$('#cities').scrollTop(0);
+
 	const date = moment().format('dddd[, ] MMMM Do[, ] YYYY');
 	$('#name').text(date);
 
@@ -114,7 +116,7 @@ $(document).ready(function(event) {
 
 	function buildSquares(objects) {
 		// remove the temporary text
-		$('#removable').html('');
+		$('#removable').remove();
 		// reset the div to append new city data
 		$('#five-day').html('');
 
