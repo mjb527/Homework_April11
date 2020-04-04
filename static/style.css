@@ -94,7 +94,6 @@ default is 0.5rem */
 }
 
 .selected {
-  color: white;
   background-color: #99c2ff !important;
   font-weight: bolder;
 }
