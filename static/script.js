@@ -41,6 +41,7 @@ $(document).ready(function(event) {
 				let cityName = formatCityName($('#city-input').val());
 				if(cityName === null || cityName === undefined) return;
 				// if the city isn't already on the list, add it
+				console.log(citiesArr);
 				if(citiesArr.indexOf(cityName) === -1) {
 					prependList(cityName);
 				}
@@ -94,7 +95,6 @@ $(document).ready(function(event) {
 		$(this).addClass('badge-secondary');
 		$(this).removeClass('badge-danger');
 	});
-
 	$(document).on('click', '.delete', function() {
 		const parent = $(this).closest('.list-group-item');
 		if(confirm(`Delete ${parent.attr('data-val')} from the list of cities?`)) {
@@ -110,6 +110,7 @@ $(document).ready(function(event) {
 	});
 
 	function prependList(city) {
+		if(city === '') return;
 		$('.selected').removeClass('selected');
 		$('#cities').prepend(`<a href="#" class="list-group-item list-group-item-action selected" data-val="${city}"><div class="row">
 						<div class="col-10">${city}</div>
@@ -205,6 +206,7 @@ $(document).ready(function(event) {
 	// set the name of the city properly and aVOid tHiS tyPe of TYPinG
 	function formatCityName(name) {
 		// set all to be lowercase
+		name = name.trim();
 		name = name.toLowerCase();
 		// set first letter capital
 		name = name.charAt(0).toUpperCase() + name.slice(1);
