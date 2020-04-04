@@ -15,6 +15,21 @@ $(document).ready(function(event) {
 		let cityName = formatCityName($('#city-input').val());
 		if(cityName === null || cityName === undefined) return;
 
+		// if the city isn't already on the list, add it
+		if(citiesArr.indexOf(cityName) === -1) {
+			prependList(cityName);
+		}
+		// otherwise, find the list item and add class to it
+		else {
+			// const cityList = ;
+			$.each($('.list-group-item'), function(i, val) {
+				if($(val).attr('data-val') === cityName) {
+					$('.selected').removeClass('selected');
+					$(val).addClass('selected');
+				}
+			});
+		}
+
 		request(cityName);
 
 	});
@@ -25,6 +40,20 @@ $(document).ready(function(event) {
 			if(event.charCode === 13) {
 				let cityName = formatCityName($('#city-input').val());
 				if(cityName === null || cityName === undefined) return;
+				// if the city isn't already on the list, add it
+				if(citiesArr.indexOf(cityName) === -1) {
+					prependList(cityName);
+				}
+				// otherwise, find the list item and add class to it
+				else {
+					// const cityList = ;
+					$.each($('.list-group-item'), function(i, val) {
+						if($(val).attr('data-val') === cityName) {
+							$('.selected').removeClass('selected');
+							$(val).addClass('selected');
+						}
+					});
+				}
 				request(cityName);
 			}
 		});
@@ -99,21 +128,6 @@ $(document).ready(function(event) {
 		const url = 'https://api.openweathermap.org/data/2.5/forecast?q=' + city + '&appid=' + apiKey;
 
 		$.ajax(url).then(function(response) {
-			// if the city isn't already on the list, add it
-			if(citiesArr.indexOf(city) === -1) {
-				prependList(city);
-			}
-			// otherwise, find the list item and add class to it
-			else {
-				// const cityList = ;
-				$.each($('.list-group-item'), function(i, val) {
-					if($(val).attr('data-val') === city) {
-						$('.selected').removeClass('selected');
-						$(val).addClass('selected');
-					}
-				});
-			}
-
 			// set the parameters based on the first object
 			const obj = response.list['0'];
 			const weather = obj.weather['0'].main;
