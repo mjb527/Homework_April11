@@ -24,11 +24,13 @@
 /* scroll bar for the list on the left of the page
   no Firefox support without disabling scrolling entirely */
 #cities::-webkit-scrollbar {
+  border-radius: 10px;
   background-color: white;
+  height: 0px; /* hides bottom scrollbar track */
 }
 
 #cities::-webkit-scrollbar-corner {
-  background-color: #ebebe0;
+  display: none;
 }
 
 #cities::-webkit-scrollbar-thumb {
@@ -54,7 +56,6 @@ body {
 #info .item {
   font-size: 20px;
   font-weight: bold;
-  /* height: 45%; */
 }
 
 .smaller {
@@ -84,7 +85,8 @@ default is 0.5rem */
 
 #cities {
   height: 70%;
-  overflow: scroll;
+  overflow-y: scroll;
+  overflow-x: hidden;
   font-weight: bold;
 }
 
